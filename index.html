@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jev Question Lab</title>
+  <link rel="icon" href="/favicon.ico">
+  <script defer src="/lab.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1><span>Jev</span> Question Lab</h1>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Jev question types">
+      <button class="tab" id="tab-noul" type="button" role="tab" data-type="noul" aria-controls="work" aria-selected="true">Noul</button>
+      <button class="tab" id="tab-choice" type="button" role="tab" data-type="choice" aria-controls="work" aria-selected="false">Choice</button>
+      <button class="tab" id="tab-score" type="button" role="tab" data-type="score" aria-controls="work" aria-selected="false">Score</button>
+      <button class="tab" id="tab-box" type="button" role="tab" data-type="box" aria-controls="work" aria-selected="false">Box</button>
+    </nav>
+    <div class="cases" id="cases" role="group" aria-label="Examples"></div>
+
+    <div class="work" id="work" role="tabpanel" aria-labelledby="tab-noul">
+      <form class="editor panel" id="editor">
+        <div id="text-input">
+          <label class="field-caption" id="input-label" for="caption">Caption</label>
+          <textarea id="caption" required rows="3" maxlength="1200"></textarea>
+        </div>
+        <div class="image-tools" id="image-tools" hidden>
+          <span class="field-caption">Image</span>
+          <label class="upload-control">
+            Choose image
+            <input class="upload" id="upload" type="file" accept="image/png,image/jpeg">
+          </label>
+          <span class="image-name" id="image-name"></span>
+          <button class="mini" type="button" id="reset-image" hidden>Use sample</button>
+        </div>
+        <div class="question">
+          <label class="field-caption" for="instructions">Question</label>
+          <textarea id="instructions" required rows="2" maxlength="600"></textarea>
+        </div>
+        <div class="criteria" id="criteria"></div>
+        <div class="row-actions">
+          <button class="run" id="run" type="submit">Run Jev</button>
+          <span class="help" id="status" role="status"></span>
+        </div>
+      </form>
+
+      <div class="output">
+        <section class="result panel" aria-labelledby="result-title">
+          <div class="section-head">
+            <h2 id="result-title">Probability of yes</h2>
+            <span class="help result-state" id="result-state"></span>
+          </div>
+          <div class="readout" id="readout" aria-live="polite"></div>
+          <p class="meta" id="timing"></p>
+        </section>
+        <details class="inspector" id="inspector">
+          <summary>Request &amp; response</summary>
+          <div class="wire">
+            <section class="code-panel" aria-labelledby="request-title">
+              <div class="section-head">
+                <h3 id="request-title">Request</h3>
+                <button class="mini" type="button" data-copy="request" aria-label="Copy request JSON">Copy</button>
+              </div>
+              <pre id="request" tabindex="0" aria-label="Request JSON"></pre>
+            </section>
+            <section class="code-panel" aria-labelledby="response-title">
+              <div class="section-head">
+                <h3 id="response-title">Response</h3>
+                <button class="mini" type="button" data-copy="response" aria-label="Copy response JSON" disabled>Copy</button>
+              </div>
+              <pre id="response" tabindex="0" aria-label="Response JSON"></pre>
+            </section>
+          </div>
+        </details>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
